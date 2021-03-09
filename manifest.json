@@ -8,7 +8,7 @@
     },
     "permissions": ["storage", "activeTab", "scripting"],
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "background.html",
         "default_icon": {
             "16": "/images/recipe_16.png",
             "24": "/images/recipe_24.png",
