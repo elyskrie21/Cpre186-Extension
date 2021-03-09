@@ -7,20 +7,20 @@ siteButton.addEventListener('click', async() => {
 })
 
 recipeButton.addEventListener('click', async() => {
-    let [tab] = await chrome.tabs.query({active: true, currentWindow: true})
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
 
     chrome.scripting.executeScript({
-        target: {tabId: tab.id},
+        target: { tabId: tab.id },
         function: scrollToRecipe,
     });
 
-}); 
+});
 
 printButton.addEventListener('click', async() => {
-    let [tab] = await chrome.tabs.query({active: true, currentWindow: true})
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
 
     chrome.scripting.executeScript({
-        target: {tabId: tab.id},
+        target: { tabId: tab.id },
         function: printRecipe,
     })
 })
