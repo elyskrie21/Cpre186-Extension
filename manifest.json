@@ -6,6 +6,14 @@
     "background": {
         "service_worker": "background.js"
     },
+    "content_scripts": [{
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+        "js": ["content.js"],
+        "run_at": "document_end"
+    }],
     "permissions": ["storage", "activeTab", "scripting"],
     "action": {
         "default_popup": "background.html",
@@ -21,5 +29,5 @@
         "24": "/images/recipe_24.png",
         "42": "/images/recipe_32.png",
         "128": "/images/recipe_128.png"
-    }   
+    }
 }
