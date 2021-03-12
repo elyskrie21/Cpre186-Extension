@@ -18,7 +18,12 @@ recipeButton.addEventListener('click', async() => {
 
 printButton.addEventListener('click', async() => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
+    
+    chrome.storage.sync.get("printLink", (link) => {
+        window.open(link.key)
+    });
 
+    window.open(link)
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: printRecipe,
@@ -34,11 +39,7 @@ function scrollToRecipe() {
 }
 
 function printRecipe() {
-    let clickEvent = new MouseEvent('click', {
-        'view': window,
-        "bubbles": true,
-        'cancelable': false
+    chrome.storage.sync.get("printLink", (link) => {
+        console.log(link.key)
     })
-    let [a] = document.getElementsByClassName('recipe-print');
-    a.dispatchEvent(clickEvent)
 }
