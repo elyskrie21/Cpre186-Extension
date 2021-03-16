@@ -1,6 +1,6 @@
 {
     "name": "Recipe Extension",
-    "description": "Skip the useless information before the recipe",
+    "description": "A simple way to get your recipes",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
@@ -10,16 +10,10 @@
     "action": {
         "default_popup": "background.html",
         "default_icon": {
-            "16": "/images/recipe_16.png",
-            "24": "/images/recipe_24.png",
-            "42": "/images/recipe_32.png",
-            "128": "/images/recipe_128.png"
+            "42": "/images/cookie.png"
         }
     },
     "icons": {
-        "16": "/images/recipe_16.png",
-        "24": "/images/recipe_24.png",
-        "42": "/images/recipe_32.png",
-        "128": "/images/recipe_128.png"
+
     }
 }
