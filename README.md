@@ -1,1 +1,1 @@
-# Recipe-Extension
+# Chrome-Extension

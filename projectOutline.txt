@@ -1,0 +1,75 @@
+Project Option #1 
+
+Project Title: Chrome Extension 
+
+Project Description: Include hardware, language, external libraries, etc. 
+
+We are planning to create a chrome web extension that will be able to track if a wanted product on Amazon has gone on sale. To accomplish this, we will be following all the necessary specifications of the google chrome extension manifest v3. Most of the extension will be written in JavaScript, but the user interface will be written in HTML and CSS. For this extension to work properly, there will be many different components. Here are some of the more critical components, 
+
+    User Interface: This interface will be the hub for most of the important things a user will be able to do. As a user needs to be able to add wanted products to the list, the UI will need a way to do so. If the user is on the amazon webpage, they will be able to click the “add to list” button. This action will set off a few distinct functions, 
+
+    Using the chrome.scripting API, a content script will be injected into the amazon website. This script will use HTML parsing to get the current price of the product, name of the product, product URL, and picture of the product for quick view later in the extension 
+
+    The content script will then use the chrome.sendMessage API to send the data back to the service worker script 
+
+    To store the wanted product, the chrome.storage API will be used after getting the “local storage,” permissions from the initial install (will be stated in our manifest). As the user may be using multiples browsers it may be beneficial to use the “synced storage” to store data to their Google profile 
+
+    
+    Periodical Price Checks: As the point of the extension is check when the product goes on sale, there will need to be a way to check prices periodically. Here is the current planned way for this to work, 
+
+    There are a few ways to automatically start the scripts needed for the check process. The fastest, yet crude, would be taking advantage of the chrome.alarms API to run the scripts at a given time interval i.e. 1 hour and a non-persistent service worker. Another viable way would be to keep a persistent service worker script; however, this would be more taxing on chrome so Alarms will be what is tried first.  
+
+    Once the alarm initiates the service worker, it will call the price check script. This script will loop through the allocated local storage to obtain the product URLs. Since this script will run in the background and without the user’s active tab being set to Amazon, it will need to HTML parse without injecting content scripts. To do this, we will be using the XMLHttpRequest library. This library will fetch the HTML body content of the Amazon product page which will allow us to parse the data. To use this library, we will need to make sure to set the cross-origin permissions to “https://*.amazon.com/*.” After scraping the needed data and checking if the wanted products got cheaper, we either send a notification or nothing 
+
+    
+    Notifications: After our extension determines that a wanted product has gone on sale, there needs to be a way to notify the user. There will be two separate ways that the extension will be used to notify the user. 
+
+    On the UI, there will be a section (the settings) where the user will be able to input their email. The extension upon finding a product on sale will initiate the send email script using the user’s given email account.  
+
+    The second way would be using the conventional JavaScript alert system to notify the user. This would cause a pop up to show near the top of their browsers stating which product is on sale. However, this solution has a few big problems, 
+
+    The user will need to be actively using their computer and be on chrome 
+
+    It can get very annoy especially if there are multiple alerts at the same time.  
+
+    To the non-technical user alert popups could look like ads/spam/hacks without a proper format and color scheme.  
+
+    Maybe Needed Server? The current version of this extension would be an efficient way to implement our idea. However, it has a few major faults 
+
+    If the user is not on chrome or a chrome process is not running, the extension will not be able to check product prices 
+
+    If a user has an incredibly old computer, it could inhibit the extension from running properly 
+
+    If the user resets his chrome browser or profile, all the product data on local storage will be wiped 
+
+
+The way to solve this issue would be to implement a server and a database. These do not have to be overly complex in their logic or creation. For example, if a server is needed, Using the Express JS framework with Node JS would provide a quite easy/non-difficult way to create a server. We would be able to host this server for free using Heroku or the AWS (Amazon Web Services) free tier.  
+
+If a database would be needed. There would be two options: An SQL server or a No-SQL server. Since time would be the limiting factor for this project, using a No-SQL server would be faster than create the needed SQL Models and queries. Using a No-SQL server just as MongoDB would fast and easy because creating JSON objects in JavaScript is quite simple.  
+
+ 
+
+Difficulties: What things are new to you? What things are just plain hard? 
+
+As the chrome. Alarm API is quite new, it might be difficult to implement it in our extension. This would be inconvenient as it would provide us with the methods needed to automate our extension. If it does not work the way we intended, the second way to automate the process would be more difficult to do.  
+Keeping the data from loss in the local storage might be a more challenging task than perceived. As it is quite simple to access and add data to the local storage, it might be just as easy for the data to be lost/corrupt. If that happens, we will need to sanitize the data in our price check script which accesses the local storage.  
+
+The hardest process will be parsing the HTML data from Amazon. We must make sure the parsing algorithm is foolproof and will work for any product listed on Amazon. Since the Amazon website uses a standard template for its product, it should make the process slightly easier.  
+
+ 
+
+Outcomes: What will you learn? Why are you interested in this project? 
+
+
+This project will teach us a lot more about JavaScript and will increase our skill in it. Also, we will be getting a better understanding of how chrome works under the hood and how website send/receive data.  
+
+We think this extension would be cool and fun the create. It combines a lot of different systems together to create something that is usable once finished.  
+
+
+Member Roles: What is each person going to work on? 
+
+Elyse – Creating the JavaScript Manifest, Service workers, API implementations 
+
+Zachary – Creating the CSS for the UI, Creating the JavaScript alert system 
+
+Casper – Creating the HTML format/markup for the UI, Creating the JavaScript email system 

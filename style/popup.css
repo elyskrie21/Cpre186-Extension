@@ -1,28 +1,2 @@
-button {
-    background: rgb(0, 206, 209);
-    height: 50px;
-    min-width: 150px;
-    border: none;
-    border-radius: 10px;
-    color:white;
-    font-size: 35px;
-    font-family: 'Cookie', cursive;
 
-    -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
-    padding-top: 5px;
-    margin: 10px;
-    outline: none;
-    box-shadow: 0 9px #999;
-  }
-  
-  button:hover {
-    background: rgb(0,206,225);
-  }
-
-  button:active {
-    background-color: turquoise;
-    box-shadow: 0 5px #666;
-    transform: translateY(8px);
-  }
   

@@ -1,3 +1,8 @@
+/*
+*This is the 'main' javascript class 
+*It will run the alarms, storage, and price check scripts 
+*/
+
 chrome.runtime.onInstalled.addListener((details) => {
     if (details.reason == 'install') {
         chrome.tabs.create({ url: chrome.runtime.getURL("pages/installed.html")}); 

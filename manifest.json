@@ -1,16 +1,16 @@
 {
-    "name": "Quick Recipe",
-    "description": "A simple way to get your recipes",
+    "name": "Price Updater",
+    "description": "Checks to see if a wanted product goes on sale",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["activeTab", "scripting"],
+    "permissions": ["activeTab", "scripting", "alarms", "https://*.amazon.com/*"],
     "action": {
         "default_popup": "background.html",
         "default_icon": {
-            "42": "/images/cookie.png"
+            "42": ""
         }
     },
     "icons": {
