@@ -15,6 +15,8 @@ async function priceCheck()
 
     let parser = new DOMParser();
     let doc = parser.parseFromString(data, 'text/html')
-
+    
     console.log(doc)
 }
+
+priceCheck();

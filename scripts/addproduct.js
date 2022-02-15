@@ -24,7 +24,7 @@ function addProduct() {
     {
         if(img.getElementsByTagName('img')[0] != null) {productImg.push(img.getElementsByTagName('img')[0].src)}
     }
-    
+    console.log(productImg.length)
     sendData(url, productName, productPrice, productImg)
 }
 

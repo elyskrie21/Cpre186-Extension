@@ -6,14 +6,17 @@
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["activeTab", "scripting", "alarms", "https://*.amazon.com/*"],
+    "permissions": ["activeTab", "scripting", "alarms"],
     "action": {
-        "default_popup": "background.html",
-        "default_icon": {
-            "42": ""
-        }
+        "default_popup": "background.html"
     },
     "icons": {
 
+    },
+    "externally_connectable": {
+        "ids": ["*"],
+        "matches": [
+            "https://*.amazon.com/*"
+        ]
     }
 }
