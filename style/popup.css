@@ -3,7 +3,7 @@
 Blue and Pink
 Todo: Create CSS styling
  */
-body {
+/* body {
     background-color: #191970;
     width: 300;
     height: 75;
@@ -29,5 +29,50 @@ button {
     text-align: center;
     display: inline-flex;
     font-family: 'Lobster', cursive;
+} */
+body {
+    background-image: linear-gradient(to right, rgb(76, 0, 255) , rgb(146, 0, 175));
+    width: 300;
+    font-family: 'Lobster', cursive;
 }
-
+.header {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    font-size: 15;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.addProduct {
+    width: 200;
+    height: 50;
+    padding-bottom: 5px;
+    color: black;
+    font-size: 15;
+    font-family: 'Lobster', cursive;
+}
+.checkPrice {
+    width: 200;
+    height: 50;
+    padding-bottom: 5px;
+    color: black;
+    font-size: 15;
+    font-family: 'Lobster', cursive;
+}
+.emailListing {
+    width: 200;
+    height: 50;
+    padding-bottom: 5px;
+    color: black;
+    font-size: 15;
+    font-family: 'Lobster', cursive;
+}
+.footer {
+    display: flex;
+    color: white;
+    font-size: 15px;
+    justify-content: center; 
+}
