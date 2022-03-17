@@ -1,22 +1,26 @@
 {
-    "name": "Price Updater",
-    "description": "Checks to see if a wanted product goes on sale",
-    "version": "1.0",
-    "manifest_version": 3,
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": ["activeTab", "scripting", "alarms"],
-    "action": {
-        "default_popup": "background.html"
-    },
-    "icons": {
-
-    },
-    "externally_connectable": {
-        "ids": ["*"],
-        "matches": [
-            "https://*.amazon.com/*"
-        ]
-    }
+  "name": "Price Updater",
+  "description": "Checks to see if a wanted product goes on sale",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "externally_connectable": {
+    "ids": ["*"],
+    "matches": [
+      "https://*.amazon.com/*",
+      "*://*.mymoondeal.com/*",
+      "*://mymoondeal.com/*",
+      "http://localhost:3000/*",
+      "http://localhost:3000/",
+      "*://localhost:*/",
+      "*://localhost/*"
+    ]
+  },
+  "permissions": ["tabs", "activeTab", "scripting", "alarms", "storage"],
+  "action": {
+    "default_popup": "background.html"
+  },
+  "icons": {}
 }
