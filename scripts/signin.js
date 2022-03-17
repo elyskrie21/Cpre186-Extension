@@ -2,7 +2,7 @@ let signUpButton = document.getElementById("signup");
 let signInButton = document.getElementById("signInButton");
 
 signUpButton.addEventListener("click", (e) => {
-  window.open("http://localhost:3000/signup", "_blank");
+  window.open("https://mymoondeal.com/signup", "_blank");
 });
 
 signInButton.addEventListener("click", async (e) => {
