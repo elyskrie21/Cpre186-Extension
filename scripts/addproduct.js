@@ -7,7 +7,9 @@ Todo: Create function to send data back to background.js
 */
 function sendData(url, name, price, images)
 {
-    // TODO
+    chrome.runtime.sendMessage({greeting: "addProduct", url: url, name: name, price: price, image: images[0]}, (response) => {
+        console.log(response.farewell); 
+    })
 }
 
 function addProduct() {
@@ -15,7 +17,7 @@ function addProduct() {
     let productName = document.getElementById('productTitle').innerText; 
 
     let productPrice = document.getElementsByClassName('a-price-whole')[0].innerText;
-    productPrice = productPrice.substring(0, productPrice.match('\n.').index)
+    //productPrice = productPrice.substring(0, productPrice.match('\n.').index)
 
     let imgs = document.getElementById('main-image-container').getElementsByClassName('a-unordered-list')[0].getElementsByTagName('li')
     let productImg = new Array()
