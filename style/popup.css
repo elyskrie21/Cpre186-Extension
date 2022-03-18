@@ -4,6 +4,7 @@ Blue and Pink
 Todo: Create CSS styling
  */
 body {
+    background-image: linear-gradient(to right, #8d06fc 0%, #0101ca 100%);
     font-family: 'Lobster', cursive;
     width: 250;
     height: 250;
@@ -16,24 +17,25 @@ body {
     justify-content: center;
 }
 .header {
-    color: black;
+    color: white;
     text-decoration: underline;
-    font-size: 35;
+    font-size: 19;
 }
 .buttons {
     display: flex;
     flex-direction: column;
 }
 .button {
-    text-decoration: none;
-    padding: 10px 25px;
-    font-size: 0.3cm;
+    font-family: 'Lobster', cursive;
+    padding: 20px 35px;
+    font-size: 13px;
     position: relative;
     margin: 2px;
+    background-image: linear-gradient(225deg, #8d06fc 0%, #0101ca 100%);
 
     overflow: hidden;
     border-radius: 30px;
-    color: black;
+    color: white;
     box-shadow: 0 0 0 0 rgba(143, 64, 248, 0.5), 0 0 0 0 rgba(39, 200, 255, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -44,8 +46,6 @@ body {
     position: absolute;
     top: -50px;
     left: -100px;
-    background-color: black;
-    background-image: linear-gradient(225deg, #27d86c 0%, #26caf8 50%, #c625d0 100%);
     z-index: -1;
     transition: transform 0.5s ease;
 }
@@ -53,9 +53,13 @@ body {
     transform: translate(0, -3px);
     box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.5), -10px 10px 25px 0 rgba(39, 200, 255, 0.5);
 }
+.btn-1:hover::after{
+    transform: rotate(150deg);
+}
+
 
 .footer {
-    color: black;
+    color: white;
     font-size: 17px;
     font-style: italic;
 }
