@@ -18,7 +18,7 @@ body {
 .header {
     color: black;
     text-decoration: underline;
-    font-size: 19;
+    font-size: 35;
 }
 .buttons {
     display: flex;
@@ -26,8 +26,8 @@ body {
 }
 .button {
     text-decoration: none;
-    padding: 20px 50px;
-    font-size: 0.5cm;
+    padding: 10px 25px;
+    font-size: 0.3cm;
     position: relative;
     margin: 2px;
 
@@ -54,28 +54,6 @@ body {
     box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.5), -10px 10px 25px 0 rgba(39, 200, 255, 0.5);
 }
 
-/* .addProduct {
-    border-radius: 10px;
-    color: black;
-}
-.checkPrice {
-    width: 200;
-    height: 50;
-    border-radius: 10px;
-    padding-bottom: 5px;
-    color: black;
-    font-size: 15;
-    font-family: 'Lobster', cursive;
-}
-.emailListing {
-    width: 200;
-    height: 50;
-    border-radius: 10px;
-    padding-bottom: 5px;
-    color: black;
-    font-size: 15;
-    font-family: 'Lobster', cursive;
-} */
 .footer {
     color: black;
     font-size: 17px;
