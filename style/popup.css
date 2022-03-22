@@ -11,9 +11,13 @@ body {
   width: 350px;
 }
 
-h1,
+h1 {
+    font-size: 35px;
+    color: #ffffff;
+}
 h2,
 a {
+  font-size: 20px;
   color: #ffffff;
 }
 
