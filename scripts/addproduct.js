@@ -5,27 +5,45 @@
 Todo: Create html parser to get product: name, price, url, and image 
 Todo: Create function to send data back to background.js
 */
-function sendData(url, name, price, images)
-{
-    // TODO
+function sendData(url, name, price, images) {
+  chrome.runtime.sendMessage(
+    {
+      greeting: "addProduct",
+      url: url,
+      name: name,
+      price: price,
+      image: images[0],
+    },
+    (response) => {
+      console.log(response.farewell);
+    }
+  );
 }
 
 function addProduct() {
-    let url = window.location.href;
-    let productName = document.getElementById('productTitle').innerText; 
+  let url = window.location.href;
+  let productName = document.getElementById("productTitle").innerText;
 
-    let productPrice = document.getElementsByClassName('a-price-whole')[0].innerText;
-    productPrice = productPrice.substring(0, productPrice.match('\n.').index)
+  let productPrice =
+    document.getElementsByClassName("a-price-whole")[0].innerText;
+  //productPrice = productPrice.substring(0, productPrice.match('\n.').index)
 
-    let imgs = document.getElementById('main-image-container').getElementsByClassName('a-unordered-list')[0].getElementsByTagName('li')
-    let productImg = new Array()
+  let imgs = document
+    .getElementById("main-image-container")
+    .getElementsByClassName("a-unordered-list")[0]
+    .getElementsByTagName("li");
+  let productImg = new Array();
 
-    for (img of imgs)
-    {
-        if(img.getElementsByTagName('img')[0] != null) {productImg.push(img.getElementsByTagName('img')[0].src)}
+  for (img of imgs) {
+    if (img.getElementsByTagName("img")[0] != null) {
+      productImg.push(img.getElementsByTagName("img")[0].src);
     }
-    console.log(productImg.length)
-    sendData(url, productName, productPrice, productImg)
+  }
+  console.log(productImg.length);
+
+  if (url.toLowerCase().includes("amazon")) {
+    sendData(url, productName, productPrice, productImg);
+  }
 }
 
-addProduct(); 
+addProduct();

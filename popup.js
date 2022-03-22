@@ -9,6 +9,7 @@ Todo: Create script to handle add email to storage
 */
 
 let addProduct = document.getElementById('add-product')
+let signoutButton = document.getElementById("signoutButton")
 
 addProduct.addEventListener('click', async () => {
     let [tab] = await chrome.tabs.query({active: true, currentWindow: true})
@@ -18,3 +19,15 @@ addProduct.addEventListener('click', async () => {
         files: ['scripts/addproduct.js']
     })
 })
+
+signoutButton.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    localStorage.removeItem("token");
+    window.location.href = "/pages/signin.html"; 
+})
+
+
+if (localStorage.getItem("token") == null) {
+    window.location.href = "/pages/signin.html"
+}
