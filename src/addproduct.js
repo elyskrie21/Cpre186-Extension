@@ -14,32 +14,35 @@ function sendData(url, name, price, images) {
       url: url,
       name: name,
       price: price,
-      image: images[3],
+      image: images[0],
     })
 }
 
 function addProduct() {
-  let url = window.location.href;
-  let productName = document.getElementById("productTitle").innerText;
+  const url = window.location.href;
+  const  productName = document.getElementById("productTitle").innerText;
 
-  let productPrice =
+  const productPrice =
     document.getElementsByClassName("a-price-whole")[0].innerText;
   //productPrice = productPrice.substring(0, productPrice.match('\n.').index)
 
-  let imgs = document.querySelector("#altImages > ul").getElementsByTagName('li');
-  let productImg = new Array();
-  console.log(imgs);
+  const images = document.querySelector("#main-image-container > ul").getElementsByTagName('li');
+  const imagesArray = [...images];
 
-  for (let i = 0; i < imgs.length; i++) {
-    try {
-      src = imgs[i].getElementsByTagName('img')[0].src;
-      productImg.push(src);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  let productImg = new Array();
+  console.log(imagesArray);
+
   
-  console.log(productImg.length);
+  imagesArray.forEach((e) => {
+    try {
+      console.log(e); 
+      productImg.push(e.getElementsByTagName('img')[0].src);
+    } catch (err) {
+      console.log(err); 
+    }
+  })
+
+  console.log(productImg);
 
   if (url.toLowerCase().includes("amazon")) {
     sendData(url, productName, productPrice, productImg);
