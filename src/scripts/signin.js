@@ -37,7 +37,7 @@ signInButton.addEventListener("click", async (e) => {
       chrome.runtime.sendMessage({greeting: "addToken", token: resJson.token}, (response) => {
           console.log(response.farewell)
       })
-      window.location.href = '/background.html'
+      window.location.href = '/popup.html'
     } else {
         document.getElementById('error').innerHTML = "Incorrect username or password";
         document.getElementById("username").value = ""; 

@@ -16,11 +16,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     sender.tab ? "from content script " + sender.tab.url : "from the extension"
   );
 
-  if (request.greeting === "checkPrice") {
-    checkPrice();
-    sendResponse({ farewell: "goodbye" });
-  }
-
   if (request.greeting == "addToken") {
     chrome.storage.local.set({token: request.token}, () => {
         sendResponse({farewell: "token added"})

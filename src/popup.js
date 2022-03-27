@@ -10,13 +10,15 @@ Todo: Create script to handle add email to storage
 
 let addProduct = document.getElementById('add-product')
 let signoutButton = document.getElementById("signoutButton")
+let settingsButton = document.getElementById("settings")
+let homeButton = document.getElementById("home");
 
 addProduct.addEventListener('click', async () => {
     let [tab] = await chrome.tabs.query({active: true, currentWindow: true})
 
     chrome.scripting.executeScript({
         target: {tabId: tab.id},
-        files: ['scripts/addproduct.js']
+        files: ['addproduct.js']
     })
 })
 
@@ -25,6 +27,18 @@ signoutButton.addEventListener("click", (e) => {
 
     localStorage.removeItem("token");
     window.location.href = "/pages/signin.html"; 
+})
+
+settingsButton.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    window.open("https://www.mymoondeal.com/dashboard", "_blank");
+})
+
+homeButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    window.open("https://www.mymoondeal.com/dashboard", "_blank"); 
 })
 
 
