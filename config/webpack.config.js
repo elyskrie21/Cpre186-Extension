@@ -11,8 +11,8 @@ const config = (env, argv) => merge(common, {
     popup: PATHS.src + '/popup.js',
     contentScript: PATHS.src + '/contentScript.js',
     background: PATHS.src + '/background.js',
-    addProduct: PATHS.scripts + '/addProduct.js',
-    signin: PATHS.scripts + "/signin.js"
+    addProduct: PATHS.src + '/addProduct.js',
+    signin: PATHS.src + "/signin.js"
   },
   devtool: argv.mode === 'production' ? false : 'source-map'
 });
