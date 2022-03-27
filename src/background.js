@@ -51,15 +51,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   
         let resJson = await res.json();
         if (resJson.success) {
-          console.log("succes");
-          sendResponse({ farewell: "success" });
+          console.log("success");
+          chrome.tabs.sendMessage(sender.tab.id, { farewell: "success", success: true});
         } else {
           console.log("failure");
-          sendResponse({ farewell: "failure" });
+          chrome.tabs.sendMessage(sender.tab.id, { farewell: "failure", success: false});
         }
       } catch (err) {
         console.log(err);
-        sendResponse({ farewell: "failure" });
+        chrome.tabs.sendMessage(sender.tab.id, { farewell: "failure", success: false});
       }
     });
   }

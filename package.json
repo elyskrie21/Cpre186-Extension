@@ -25,5 +25,8 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "sweetalert2": "^11.4.7"
   }
 }
