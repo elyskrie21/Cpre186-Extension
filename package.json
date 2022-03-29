@@ -28,5 +28,6 @@
   },
   "dependencies": {
     "sweetalert2": "^11.4.7"
-  }
+  },
+  "main": "index.js"
 }

@@ -6,7 +6,7 @@ Todo: Create CSS styling
 
 /* Global Changes */
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Carter One', cursive;
   background-image: linear-gradient(210deg, #cbdcef 0%, #7719da 100%);
   width: 350px;
 }
