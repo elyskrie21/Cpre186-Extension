@@ -8,69 +8,101 @@ Todo: Create function to send data back to background.js
 import Swal from "sweetalert2";
 
 function sendData(url, name, price, images) {
-  chrome.runtime.sendMessage(
-    {
-      greeting: "addProduct",
-      url: url,
-      name: name,
-      price: price,
-      image: images[0],
-    })
+  chrome.runtime.sendMessage({
+    greeting: "addProduct",
+    url: url,
+    name: name,
+    price: price,
+    image: images[0],
+  });
 }
 
-function addProduct() {
+function addProductAmazon() {
   const url = window.location.href;
-  const  productName = document.getElementById("productTitle").innerText;
+  const productName = document.getElementById("productTitle").innerText;
 
   const productPrice =
     document.getElementsByClassName("a-price-whole")[0].innerText;
   //productPrice = productPrice.substring(0, productPrice.match('\n.').index)
 
-  const images = document.querySelector("#main-image-container > ul").getElementsByTagName('li');
+  const images = document
+    .querySelector("#main-image-container > ul")
+    .getElementsByTagName("li");
   const imagesArray = [...images];
 
   let productImg = new Array();
   console.log(imagesArray);
 
-  
   imagesArray.forEach((e) => {
     try {
-      console.log(e); 
-      productImg.push(e.getElementsByTagName('img')[0].src);
+      productImg.push(e.getElementsByTagName("img")[0].src);
     } catch (err) {
-      console.log(err); 
+      console.log(err);
     }
-  })
+  });
 
-  console.log(productImg);
+  sendData(url, productName, productPrice, productImg);
+}
 
-  if (url.toLowerCase().includes("amazon")) {
-    sendData(url, productName, productPrice, productImg);
-  }
+function addProductEbay() {
+  const url = window.location.href;
+
+  const productName = document.querySelector(
+    "#LeftSummaryPanel > div.vi-swc-lsp > div:nth-child(1) > div > h1"
+  ).textContent;
+
+  const productPrice = () => {
+    let id = document.getElementById("prcIsum") == null ? "mm-saleDscPrc" : "prcIsum"; 
+    return document.getElementById(id).textContent.trim().replace("US $", "");
+  };
+
+  const images = [
+    ...document
+      .getElementById("vertical-align-items-viewport")
+      .getElementsByTagName("li"),
+  ];
+
+  let productImg = new Array();
+
+  images.forEach((e) => {
+    try {
+      productImg.push(e.getElementsByTagName("img")[0].src);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  productImg.forEach(function (element, index) {
+    this[index] = element.replace("s-l64", "s-l500");
+  }, productImg);
+
+  sendData(url, productName, productPrice, productImg);
 }
 
 chrome.runtime.onMessage.addListener((message) => {
-  console.log('sent from background', message.farewell); 
+  console.log("sent from background", message.farewell);
   if (message.success) {
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your product has been saved',
+      position: "center",
+      icon: "success",
+      title: "Your product has been saved",
       showConfirmButton: false,
-      timer: 1500
-    })
+      timer: 1500,
+    });
   } else {
     Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Oops...',
+      position: "center",
+      icon: "error",
+      title: "Oops...",
       text: "Your product was unable to be saved",
       showConfirmButton: false,
-      timer: 3000
-    })
+      timer: 3000,
+    });
   }
 });
 
-addProduct();
-
-
+if (window.location.href.toLowerCase().includes("amazon")) {
+  addProductAmazon();
+} else if (window.location.href.toLowerCase().includes("ebay")) {
+  addProductEbay();
+}
