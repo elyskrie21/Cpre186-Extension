@@ -50,11 +50,11 @@ function addProductEbay() {
   const productName = document.querySelector(
     "#LeftSummaryPanel > div.vi-swc-lsp > div:nth-child(1) > div > h1"
   ).textContent;
+  
+  let id = document.getElementById("prcIsum") == null ? "mm-saleDscPrc" : "prcIsum";
+  const productPrice = document.getElementById(id).textContent.trim().replace("US $", "");
 
-  const productPrice = () => {
-    let id = document.getElementById("prcIsum") == null ? "mm-saleDscPrc" : "prcIsum"; 
-    return document.getElementById(id).textContent.trim().replace("US $", "");
-  };
+  console.log(productPrice); 
 
   const images = [
     ...document
