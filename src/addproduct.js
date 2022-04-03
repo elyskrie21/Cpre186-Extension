@@ -21,8 +21,13 @@ function addProductAmazon() {
   const url = window.location.href;
   const productName = document.getElementById("productTitle").innerText;
 
-  const productPrice =
-    document.getElementsByClassName("a-price-whole")[0].innerText;
+  const productPrice = document
+    .getElementsByClassName("a-price-whole")[0]
+    .textContent.concat(
+      document.querySelector(
+        "#tp_price_block_total_price_ww > span:nth-child(2) > span.a-price-fraction"
+      ).textContent
+    );
   //productPrice = productPrice.substring(0, productPrice.match('\n.').index)
 
   const images = document
@@ -50,11 +55,15 @@ function addProductEbay() {
   const productName = document.querySelector(
     "#LeftSummaryPanel > div.vi-swc-lsp > div:nth-child(1) > div > h1"
   ).textContent;
-  
-  let id = document.getElementById("prcIsum") == null ? "mm-saleDscPrc" : "prcIsum";
-  const productPrice = document.getElementById(id).textContent.trim().replace("US $", "");
 
-  console.log(productPrice); 
+  let id =
+    document.getElementById("prcIsum") == null ? "mm-saleDscPrc" : "prcIsum";
+  const productPrice = document
+    .getElementById(id)
+    .textContent.trim()
+    .replace("US $", "");
+
+  console.log(productPrice);
 
   const images = [
     ...document
