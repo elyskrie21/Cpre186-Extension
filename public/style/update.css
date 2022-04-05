@@ -1,14 +1,9 @@
-/*
-*CSS page for the html page when Exentsion is created
-
-Todo: Created needed CSS styling 
- */
- .button {
+.button {
     
-    width: 150px;
-    height: 30px;
+    width: 170px;
+    height: 35px;
     background: rgb(128, 42, 128);
-    padding: 10px;
+    padding: 12px;
     text-align: center;
     border-radius: 5px;
     color: white;
@@ -29,12 +24,16 @@ Todo: Created needed CSS styling
 h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 60px;
+    padding-bottom: 0;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 p{
     font-size: 30px;
 }
 h2{
     font-size: 30px;
+    margin-top: 0;
 }
 ul{
     font-size: 20px;
@@ -42,7 +41,14 @@ ul{
     list-style-position: inside;
     left: 31vw;
     bottom: 25vh;
+    margin-bottom: 15px;
+    
 }
+.list{
+    border: solid 8px rgb(108, 26, 108);
+    margin-bottom: 15px;
+}
+
 li{
     margin-left: 0;
     text-align: center;
@@ -54,8 +60,8 @@ body{
 }
 .content{
     position: absolute;
-    left: 31vw;
-    bottom: 25vh;
+    left: 19vw;
+    bottom: 20vh;
     text-align: center; 
 }
 image{
