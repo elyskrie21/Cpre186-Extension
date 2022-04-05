@@ -26,6 +26,9 @@ signoutButton.addEventListener("click", (e) => {
     e.preventDefault();
 
     localStorage.removeItem("token");
+    chrome.runtime.sendMessage({greeting: "removeToken"}, (response) => {
+        console.log(response.farewell)
+    })
     window.location.href = "/pages/signin.html"; 
 })
 

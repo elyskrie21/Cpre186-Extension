@@ -63,6 +63,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       }
     });
   }
+
+  if (request.greeting == "removeToken") {
+    chrome.storage.local.clear(() => {
+      sendResponse({farewell: "token removed"})
+    }
+    )
+  }
 });
 
 chrome.runtime.onMessageExternal.addListener(
