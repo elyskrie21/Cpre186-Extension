@@ -35,7 +35,7 @@ signoutButton.addEventListener("click", (e) => {
 settingsButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-    window.open("https://www.mymoondeal.com/dashboard", "_blank");
+    window.open("https://www.mymoondeal.com/settings", "_blank");
 })
 
 homeButton.addEventListener('click', (e) => {
